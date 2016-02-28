@@ -99,7 +99,7 @@ Add yourself to authorized keys:
 ##### Forward port with SSH
 
     $ sudo su -
-    # ssh johndoe@localhost -L \*:443:8080
+    # ssh -i /Users/johndoe/.ssh/id_rsa johndoe@localhost -L \*:443:8080
 
 Try it out:
 

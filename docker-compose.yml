@@ -1,0 +1,10 @@
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 443:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain1.pem
+    REGISTRY_HTTP_TLS_KEY: /certs/privkey1.pem
+  volumes:
+    - /Users/johndoe/.ssl/registry.yourdomain.com:/certs

@@ -1,3 +1,7 @@
+This guide shows you how to set up a Docker Private Registry on a local network with full HTTPS support, which will work straight out of the box with all Docker Engines. Perfect for demos and workshops with poor internet connectivity and lots of bandwidth hungry Docker users.
+
+Thanks to [@winggundamth](https://twitter.com/winggundamth) for the idea!
+
 ## Set up temporary server
 
 Get a hold of a server somewhere with a public IP
@@ -112,7 +116,9 @@ Get your current IP on the network where your users are, for example ``192.168.1
     $ curl https://registry.yourdomain.com/v2/
     {}%
 
-## Push images to repository
+## Push images to local registry
+
+Pull down an image from the official hub, re-tag it to the local registry and push it up.
 
     docker pull redis
     docker tag redis registry.yourdomain.com/library/redis

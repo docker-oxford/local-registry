@@ -8,7 +8,7 @@ Get a hold of a server somewhere with a public IP.
 
 ## Set DNS
 
-Point ``registry.yourdomain.com`` to the public IP of the temporary server.
+Create an ``A`` record for ``registry.yourdomain.com`` to point to the public IP of the temporary server.
 
 ## Run letsencrypt
 

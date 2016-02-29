@@ -4,11 +4,11 @@ Thanks to [@winggundamth](https://twitter.com/winggundamth) for the idea!
 
 ## Set up temporary server
 
-Get a hold of a server somewhere with a public IP
+Get a hold of a server somewhere with a public IP.
 
 ## Set DNS
 
-Point registry.yourdomain.com to the public IP
+Point ``registry.yourdomain.com`` to the public IP of the temporary server.
 
 ## Run letsencrypt
 

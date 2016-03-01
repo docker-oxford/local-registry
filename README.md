@@ -78,7 +78,7 @@ This is what it will look like:
 
 ##### Forward port in VirtualBox
 
-Select the VM and click ``Settings -> Network ->``, add a rule to forward TCP on host port 8080 to guest port 443.
+Select the VM and click ``Settings -> Network ->``, add a rule to forward TCP on host port ``8080`` to guest port ``443``.
 
 ##### Disable Password authentication
 
@@ -99,7 +99,7 @@ Add yourself to authorized keys:
 ##### Forward port with SSH
 
     $ sudo su -
-    # ssh -i /Users/johndoe/.ssh/id_rsa johndoe@localhost -L \*:443:8080
+    # ssh -i /Users/johndoe/.ssh/id_rsa johndoe@localhost -L \*:443::8080
 
 Try it out:
 
@@ -138,3 +138,33 @@ Or in a Compose file:
 Or in a Dockerfile:
 
     FROM registry.yourdomain.com/library/redis
+
+### Example Voting App
+
+If you're setting up the Docker [Example Voting App](https://github.com/docker/example-voting-app), these are the steps you need to take to use the local registry.
+
+#### Pull, tag and push images
+
+    git clone https://github.com/docker/example-voting-app.git
+    cd example-voting-app
+    wget https://raw.githubusercontent.com/docker-oxford/local-registry/master/pull_tag_and_push.sh
+    chmod +x pull_tag_and_push.sh
+    ./pull_tag_and_push.sh registry.yourdomain.com
+
+#### Update Voting App files
+
+Change these files:
+
+    ./docker-compose.yml:    image: redis
+    ./docker-compose.yml:    image: postgres:9.4
+    ./result-app/Dockerfile:FROM node:0.10
+    ./voting-app/Dockerfile:FROM python:2.7
+    ./worker/Dockerfile:FROM java:7
+
+To point to the local private registry:
+
+    ./docker-compose.yml:    image: registry.yourdomain.com/library/redis
+    ./docker-compose.yml:    image: registry.yourdomain.com/library/postgres:9.4
+    ./result-app/Dockerfile:FROM registry.yourdomain.com/library/node:0.10
+    ./voting-app/Dockerfile:FROM registry.yourdomain.com/library/python:2.7
+    ./worker/Dockerfile:FROM registry.yourdomain.com/library/java:7

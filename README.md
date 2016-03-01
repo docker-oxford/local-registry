@@ -143,17 +143,17 @@ Or in a Dockerfile:
 
 If you're setting up the Docker [Example Voting App](https://github.com/docker/example-voting-app), these are the steps you need to take to use the local registry.
 
-#### Pull, tag and push images
+#### Setting up
 
-    git clone https://github.com/docker/example-voting-app.git
-    cd example-voting-app
+This script pulls, tags and pushes (to the local registry) any image you specify:
+
     wget https://raw.githubusercontent.com/docker-oxford/local-registry/master/pull_tag_and_push.sh
     chmod +x pull_tag_and_push.sh
-    ./pull_tag_and_push.sh registry.yourdomain.com
+    ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7 node:0.10 java:7 postgres:9.4
 
 #### Update Voting App files
 
-Change these files:
+In the voting app, change these files:
 
     ./docker-compose.yml:    image: redis
     ./docker-compose.yml:    image: postgres:9.4
@@ -163,8 +163,8 @@ Change these files:
 
 To point to the local private registry:
 
-    ./docker-compose.yml:    image: registry.yourdomain.com/library/redis
-    ./docker-compose.yml:    image: registry.yourdomain.com/library/postgres:9.4
-    ./result-app/Dockerfile:FROM registry.yourdomain.com/library/node:0.10
-    ./voting-app/Dockerfile:FROM registry.yourdomain.com/library/python:2.7
-    ./worker/Dockerfile:FROM registry.yourdomain.com/library/java:7
+    ./docker-compose.yml:    image: registry.yourdomain.com/redis
+    ./docker-compose.yml:    image: registry.yourdomain.com/postgres:9.4
+    ./result-app/Dockerfile:FROM registry.yourdomain.com/node:0.10
+    ./voting-app/Dockerfile:FROM registry.yourdomain.com/python:2.7
+    ./worker/Dockerfile:FROM registry.yourdomain.com/java:7

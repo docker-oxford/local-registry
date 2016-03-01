@@ -121,8 +121,12 @@ Get your current IP on the network where your users are, for example ``192.168.1
 Pull down an image from the official hub, re-tag it to the local registry and push it up.
 
     docker pull redis
-    docker tag redis registry.yourdomain.com/library/redis
-    docker push registry.yourdomain.com/library/redis
+    docker tag redis registry.yourdomain.com/redis
+    docker push registry.yourdomain.com/redis
+
+This script pulls, tags and pushes (to the local registry) a list of images:
+
+    ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7 node:0.10 java:7 postgres:9.4
 
 ## That's it!
 
@@ -143,17 +147,11 @@ Or in a Dockerfile:
 
 If you're setting up the Docker [Example Voting App](https://github.com/docker/example-voting-app), these are the steps you need to take to use the local registry.
 
-#### Setting up
-
-This script pulls, tags and pushes (to the local registry) any image you specify:
-
-    wget https://raw.githubusercontent.com/docker-oxford/local-registry/master/pull_tag_and_push.sh
-    chmod +x pull_tag_and_push.sh
-    ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7 node:0.10 java:7 postgres:9.4
+Follow the steps above to pull, tag and push the images ``redis python:2.7 node:0.10 java:7 postgres:9.4`` to your registry.
 
 #### Update Voting App files
 
-In the voting app, change these files:
+In the voting app, users should change these files:
 
     ./docker-compose.yml:    image: redis
     ./docker-compose.yml:    image: postgres:9.4

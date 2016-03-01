@@ -124,7 +124,7 @@ Pull down an image from the official hub, re-tag it to the local registry and pu
     docker tag redis registry.yourdomain.com/redis
     docker push registry.yourdomain.com/redis
 
-This script pulls, tags and pushes (to the local registry) a list of images:
+This script pulls, tags and pushes a list of images:
 
     ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7 node:0.10 java:7 postgres:9.4
 
@@ -132,16 +132,16 @@ This script pulls, tags and pushes (to the local registry) a list of images:
 
 Your LAN users can now use your private registry to pull the image:
 
-    docker pull registry.yourdomain.com/library/redis
+    docker pull registry.yourdomain.com/redis
 
 Or in a Compose file:
 
     redis:
-      image: registry.yourdomain.com/library/redis
+      image: registry.yourdomain.com/redis
 
 Or in a Dockerfile:
 
-    FROM registry.yourdomain.com/library/redis
+    FROM registry.yourdomain.com/redis
 
 ### Example Voting App
 

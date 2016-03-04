@@ -20,7 +20,7 @@ Run letsencrypt on the temporary server.
 
 The certificate files and key (4 files total) are placed here:
 
-    $ ls /etc/letsencrypt/live/registry.yourdomain.com/
+    $ ls /etc/letsencrypt/archive/registry.yourdomain.com/
     cert1.pem
     chain1.pem
     fullchain1.pem

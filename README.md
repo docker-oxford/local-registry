@@ -4,7 +4,7 @@ Thanks to [@winggundamth](https://twitter.com/winggundamth) for the idea!
 
 ## Set up temporary server
 
-Get a hold of a server somewhere with a public IP.
+Get a hold of a server somewhere with a public IP. Make sure that the server has port ``443`` open to the internet.
 
 ## Set DNS
 

@@ -28,7 +28,7 @@ The certificate files and key (4 files total) are placed here:
 
 ## Download certificates
 
-Copy all certificate files and the private key to your local machine.
+Copy all certificate files and the private key to ``.ssl/registry/`` in your home folder on your local machine.
 
 ## Run registry
 
@@ -48,13 +48,10 @@ On a Mac you need to do a bit more. First, install [Docker Toolbox](https://www.
 
 #### Put certs in place
 
-Put the certificates in a folder somewhere under ``/Users/``, for example:
+Ensure that the certificates and key are in your home folder, for example:
 
-    /Users/johndoe/.ssl/registry.yourdomain.com/
+    /Users/johndoe/.ssl/registry/
 
-Enter the path under ``volumes:`` in ``docker-compose.yml``:
-
-    - /Users/johndoe/.ssl/registry.yourdomain.com:/certs
 
 #### Start the registry
 

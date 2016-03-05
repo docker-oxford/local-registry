@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 function usage() {
-  echo "usage: $0 [registry fqdn] [images]"
+  echo "usage: $0 [registry fqdn] [images]" && exit 1
 }
 [ "${1}" == "" ] && usage
 REGISTRY="${1}"
@@ -17,4 +17,4 @@ echo ${HUB_IMAGES} | xargs -I% -n1 docker tag % ${REGISTRY}/%
 # Push images to private registry
 echo ${HUB_IMAGES} | xargs -I% -n1 docker push ${REGISTRY}/%
 [ $? -ne 0 ] && echo "failed to push all images" && exit 1
-echo "Done!" && exit 0
+exit 0

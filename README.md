@@ -75,7 +75,7 @@ This is what it will look like:
 
 ##### Forward port in VirtualBox
 
-Select the VM and click ``Settings -> Network ->``, add a rule to forward TCP on host port ``8080`` to guest port ``443``.
+Open Virtualbox and select the Docker Machine VM. Click ``Settings -> Network ->``, and on the NAT interface add a rule to forward TCP on host port ``8080`` to guest port ``443``.
 
 ##### Disable Password authentication
 
@@ -91,7 +91,7 @@ Go to ``System Preferences -> Sharing`` and tick ``Remote Login``.
 
 Add yourself to authorized keys:
 
-    cat ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 ##### Forward port with SSH
 

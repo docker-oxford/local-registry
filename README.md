@@ -123,7 +123,7 @@ Pull down an image from the official hub, re-tag it to the local registry and pu
 
 This script pulls, tags and pushes a list of images:
 
-    ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7 node:0.10 java:7 postgres:9.4
+    ./pull_tag_and_push.sh registry.yourdomain.com redis python:2.7
 
 ## That's it!
 
@@ -139,27 +139,3 @@ Or in a Compose file:
 Or in a Dockerfile:
 
     FROM registry.yourdomain.com/redis
-
-### Example Voting App
-
-If you're setting up the Docker [Example Voting App](https://github.com/docker/example-voting-app), these are the steps you need to take to use the local registry.
-
-Follow the steps above to pull, tag and push the images ``redis python:2.7 node:0.10 java:7 postgres:9.4`` to your registry.
-
-#### Update Voting App files
-
-In the voting app, users should change these files:
-
-    ./docker-compose.yml:    image: redis
-    ./docker-compose.yml:    image: postgres:9.4
-    ./result-app/Dockerfile:FROM node:0.10
-    ./voting-app/Dockerfile:FROM python:2.7
-    ./worker/Dockerfile:FROM java:7
-
-To point to the local private registry:
-
-    ./docker-compose.yml:    image: registry.yourdomain.com/redis
-    ./docker-compose.yml:    image: registry.yourdomain.com/postgres:9.4
-    ./result-app/Dockerfile:FROM registry.yourdomain.com/node:0.10
-    ./voting-app/Dockerfile:FROM registry.yourdomain.com/python:2.7
-    ./worker/Dockerfile:FROM registry.yourdomain.com/java:7
